@@ -1,0 +1,6 @@
+praw.ini
+*.tar
+checkpoint_run3.tar
+.ipynb_checkpoints/
+raw_data/
+
