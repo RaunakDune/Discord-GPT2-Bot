@@ -1,27 +1,17 @@
 # bot.py
 import os
-import random
 
-from discord.ext import commands
+import discord
 from dotenv import load_dotenv
 
 load_dotenv()
 token = os.getenv('DISCORD_TOKEN')
+print(token)
 
-bot = commands.Bot(command_prefix='!')
+client = discord.Client()
 
-@bot.command(name='99', help='Responds with a random quote from Brooklyn 99')
-async def nine_nine(ctx):
-    brooklyn_99_quotes = [
-        'I\'m the human form of the 💯 emoji.',
-        'Bingpot!',
-        (
-            'Cool. Cool cool cool cool cool cool cool, '
-            'no doubt no doubt no doubt no doubt.'
-        ),
-    ]
+@client.event
+async def on_ready():
+    print(f'{client.user} has connected to Discord!')
 
-    response = random.choice(brooklyn_99_quotes)
-    await ctx.send(response)
-
-bot.run(token)
+client.run(token)
